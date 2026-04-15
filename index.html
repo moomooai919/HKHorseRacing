@@ -6,86 +6,93 @@
 <title>🏇 AI 賽馬預測系統</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:-apple-system,'PingFang HK','Helvetica Neue',sans-serif;background:#080c18;color:#dde4f0;min-height:100vh}
-a{text-decoration:none}
-.site-header{position:sticky;top:0;z-index:100;background:rgba(8,12,24,.96);backdrop-filter:blur(14px);border-bottom:1px solid #1a2040;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:20px;font-weight:800;background:linear-gradient(135deg,#f0c040,#ff8c42);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero{min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden}
+a{text-decoration:none;color:inherit}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(8,12,24,.97);backdrop-filter:blur(14px);border-bottom:1px solid #1a2040;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:19px;font-weight:800;background:linear-gradient(135deg,#f0c040,#ff8c42);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,#1a1000 0%,#080c18 70%);z-index:0}
-.hero-inner{position:relative;z-index:1;max-width:920px}
-.hero-tag{display:inline-block;font-size:11px;padding:4px 14px;border:1px solid #f0c04060;border-radius:20px;color:#f0c040;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
-.hero h1{font-size:clamp(36px,7vw,70px);font-weight:900;line-height:1.1;margin-bottom:16px}
+.hero-inner{position:relative;z-index:1;max-width:900px}
+.hero-tag{display:inline-block;font-size:11px;padding:4px 14px;border:1px solid #f0c04060;border-radius:20px;color:#f0c040;letter-spacing:1px;text-transform:uppercase;margin-bottom:22px}
+.hero h1{font-size:clamp(34px,7vw,68px);font-weight:900;line-height:1.1;margin-bottom:14px}
 .grad{background:linear-gradient(135deg,#f0c040 0%,#ff8c42 50%,#f0c040 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite}
 @keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
-.hero-sub{font-size:18px;color:#8899bb;margin-bottom:34px;line-height:1.8}
-.btn-gold{padding:14px 32px;background:linear-gradient(135deg,#f0c040,#ff8c42);border:none;border-radius:10px;color:#080c18;font-weight:800;font-size:15px;display:inline-block}
-.section{padding:56px 24px;max-width:1100px;margin:0 auto}
-.section-title{font-size:28px;font-weight:800;margin-bottom:8px}
-.hl{color:#f0c040}.section-sub{font-size:14px;color:#557;margin-bottom:28px;line-height:1.7}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.card{background:#0e1528;border:1px solid #1a2540;border-radius:18px;padding:22px;transition:.2s;display:block;color:inherit}
+.hero-sub{font-size:17px;color:#8899bb;margin-bottom:32px;line-height:1.8}
+.btn-gold{padding:14px 32px;background:linear-gradient(135deg,#f0c040,#ff8c42);border:none;border-radius:10px;color:#080c18;font-weight:800;font-size:15px;display:inline-block;transition:.2s}
+.btn-gold:hover{transform:translateY(-2px);opacity:.9}
+.section{padding:52px 24px;max-width:1100px;margin:0 auto}
+.section-title{font-size:26px;font-weight:800;margin-bottom:6px}
+.hl{color:#f0c040}
+.section-sub{font-size:14px;color:#557;margin-bottom:26px;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{background:#0e1528;border:1px solid #1a2540;border-radius:18px;padding:22px;transition:.2s;display:block}
 .card:hover{border-color:#f0c04060;box-shadow:0 0 24px #f0c04015;transform:translateY(-3px)}
-.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-.card-date{font-size:22px;font-weight:900;color:#f0c040}
-.badge{font-size:10px;padding:4px 10px;border-radius:999px;border:1px solid #22c55e60;background:#22c55e12;color:#4ade80;font-weight:700}
-.meta{font-size:13px;color:#9fb0c8;line-height:1.8}
-.card-title{font-size:16px;font-weight:700;margin-bottom:8px}
-.card-desc{font-size:13px;color:#668;line-height:1.8}
-.notice{background:#0b1120;border:1px solid #1a2540;border-left:4px solid #f0c040;border-radius:14px;padding:18px;color:#9fb0c8;line-height:1.8}
-footer{text-align:center;padding:30px 24px 40px;border-top:1px solid #1a2040;font-size:12px;color:#335;margin-top:48px}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.card-date{font-size:20px;font-weight:900;color:#f0c040}
+.badge-new{font-size:10px;padding:3px 10px;border-radius:999px;border:1px solid #22c55e60;background:#22c55e12;color:#4ade80;font-weight:700}
+.badge-hist{font-size:10px;padding:3px 10px;border-radius:999px;border:1px solid #3b82f660;background:#3b82f612;color:#60a5fa;font-weight:700}
+.badge-done{font-size:10px;padding:3px 10px;border-radius:999px;border:1px solid #8b5cf660;background:#8b5cf612;color:#a78bfa;font-weight:700}
+.card-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.card-meta{font-size:13px;color:#9fb0c8;margin-bottom:6px}
+.card-desc{font-size:12px;color:#557;line-height:1.7}
+footer{text-align:center;padding:28px 24px 40px;border-top:1px solid #1a2040;font-size:12px;color:#335;margin-top:48px}
 </style>
 </head>
 <body>
 <header class="site-header">
-  <div class="logo">🏇 AI 賽馬預測</div>
+  <div class="logo">🏇 AI 賽馬預測系統</div>
 </header>
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">⚡ Daily Race Pages</div>
-    <h1><span class="grad">AI 賽馬預測系統</span></h1>
-    <p class="hero-sub">已開始由「單一大頁」改成「每個賽馬日一個獨立頁面」。<br>Landing page 只做入口，賽前預測、臨場更新、賽後覆盤都可收納到各自日期頁。</p>
-    <a href="#days" class="btn-gold"><i class="fas fa-calendar-days"></i> 查看賽馬日頁面</a>
+    <div class="hero-tag">每個賽馬日獨立頁面</div>
+    <h1><span class="grad">香港賽馬<br>AI 預測</span></h1>
+    <p class="hero-sub">每個賽馬日一個獨立頁面，包含賽前預測、AI 推介，賽後補上實際結果。</p>
+    <a href="#days" class="btn-gold"><i class="fas fa-calendar-days"></i> 查看所有賽馬日</a>
   </div>
 </section>
 
 <section class="section" id="days">
-  <div class="section-title">賽馬日<span class="hl">頁面入口</span></div>
-  <div class="section-sub">先保留舊成品風格，再逐步模板化。現在可以按日期進入獨立頁，不用再把所有內容硬塞在同一個 HTML。</div>
+  <div class="section-title">賽馬日<span class="hl">記錄</span></div>
+  <div class="section-sub">按日期進入對應頁面，賽後更新會在同一頁顯示。</div>
   <div class="grid">
+
     <a class="card" href="races/2026-04-15/index.html">
       <div class="card-head">
         <div class="card-date">2026-04-15</div>
-        <div class="badge">最新</div>
+        <div class="badge-new">最新</div>
       </div>
-      <div class="card-title">跑馬地夜賽（HV）</div>
-      <div class="meta">9 場 · 今日獨立頁已建立</div>
-      <div class="card-desc">外層用舊模板風格，內層接上今天的完整預測報告。這是新架構第一個實例。</div>
+      <div class="card-title">跑馬地夜賽</div>
+      <div class="card-meta">9 場 · 草地</div>
+      <div class="card-desc">今日賽前 AI 預測，賽後結果待更新。</div>
     </a>
 
     <a class="card" href="races/2026-04-12/index.html">
       <div class="card-head">
         <div class="card-date">2026-04-12</div>
-        <div class="badge" style="border-color:#3b82f660;background:#3b82f612;color:#60a5fa">歷史</div>
+        <div class="badge-hist">歷史</div>
       </div>
-      <div class="card-title">沙田賽日（ST）</div>
-      <div class="meta">11 場 · 已存檔報告</div>
-      <div class="card-desc">先保留舊版輸出作歷史對照，之後可補做同款外層模板包裝。</div>
+      <div class="card-title">沙田賽日</div>
+      <div class="card-meta">11 場 · 草地</div>
+      <div class="card-desc">AI 預測記錄存檔。</div>
     </a>
-  </div>
 
-  <div class="notice" style="margin-top:24px">
-    <strong>接下來最合理的方向：</strong><br>
-    1. 固定每個賽日輸出到 `horse-racing/races/YYYY-MM-DD/`<br>
-    2. 同一天頁面內分區：賽前預測 / 臨場更新 / 賽後結果 / ROI 覆盤<br>
-    3. Landing page 只維護日期清單與簡要摘要
+    <a class="card" href="races/2026-04-08/index.html">
+      <div class="card-head">
+        <div class="card-date">2026-04-08</div>
+        <div class="badge-done">賽後結果✅</div>
+      </div>
+      <div class="card-title">跑馬地夜賽</div>
+      <div class="card-meta">9 場 · 草地</div>
+      <div class="card-desc">首選命中率 22%（2/9）· 入前三率 78%（7/9）</div>
+    </a>
+
   </div>
 </section>
 
 <footer>
-  Daily race pages · built by 罗宾汉虾 🦐
+  AI 賽馬預測 · 僅供參考，不構成投注建議
 </footer>
 </body>
 </html>
