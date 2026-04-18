@@ -31,11 +31,13 @@ a{text-decoration:none;color:inherit}
 .card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
 .card-date{font-size:20px;font-weight:900;color:#f0c040}
 .badge-new{font-size:10px;padding:3px 10px;border-radius:999px;border:1px solid #22c55e60;background:#22c55e12;color:#4ade80;font-weight:700}
+.badge-pre{font-size:10px;padding:3px 10px;border-radius:999px;border:1px solid #f0c04060;background:#f0c04012;color:#f0c040;font-weight:700}
 .badge-hist{font-size:10px;padding:3px 10px;border-radius:999px;border:1px solid #3b82f660;background:#3b82f612;color:#60a5fa;font-weight:700}
 .badge-done{font-size:10px;padding:3px 10px;border-radius:999px;border:1px solid #8b5cf660;background:#8b5cf612;color:#a78bfa;font-weight:700}
 .card-title{font-size:16px;font-weight:700;margin-bottom:6px}
 .card-meta{font-size:13px;color:#9fb0c8;margin-bottom:6px}
 .card-desc{font-size:12px;color:#557;line-height:1.7}
+.card-parlay{margin-top:10px;padding-top:10px;border-top:1px solid #1e2a40;font-size:11px;color:#4ade80;font-weight:700}
 footer{text-align:center;padding:28px 24px 40px;border-top:1px solid #1a2040;font-size:12px;color:#335;margin-top:48px}
 </style>
 </head>
@@ -48,24 +50,35 @@ footer{text-align:center;padding:28px 24px 40px;border-top:1px solid #1a2040;fon
   <div class="hero-inner">
     <div class="hero-tag">每個賽馬日獨立頁面</div>
     <h1><span class="grad">香港賽馬<br>AI 預測</span></h1>
-    <p class="hero-sub">每個賽馬日一個獨立頁面，包含賽前預測、AI 推介，賽後補上實際結果。</p>
+    <p class="hero-sub">每個賽馬日一個獨立頁面，包含賽前預測、AI 推介、3關過關模擬投注，賽後補上實際結果。</p>
     <a href="#days" class="btn-gold"><i class="fas fa-calendar-days"></i> 查看所有賽馬日</a>
   </div>
 </section>
 
 <section class="section" id="days">
   <div class="section-title">賽馬日<span class="hl">記錄</span></div>
-  <div class="section-sub">按日期進入對應頁面，賽後更新會在同一頁顯示。</div>
+  <div class="section-sub">按日期進入對應頁面，賽後更新會在同一頁顯示。每日自動生成 3 關過關模擬投注。</div>
   <div class="grid">
+
+    <a class="card" href="races/2026-04-19/index.html">
+      <div class="card-head">
+        <div class="card-date">2026-04-19</div>
+        <div class="badge-pre">⏳ 賽前預測</div>
+      </div>
+      <div class="card-title">沙田賽日</div>
+      <div class="card-meta">11 場 · 草地 + 全天候跑道</div>
+      <div class="card-desc">AI 賽前預測，賠率出後將更新信心度。</div>
+      <div class="card-parlay">🎯 3關過關：第5場 勤德天下 × 第8場 錶之極光 × 第9場 首飾天空 → 預計 HK$86</div>
+    </a>
 
     <a class="card" href="races/2026-04-15/index.html">
       <div class="card-head">
         <div class="card-date">2026-04-15</div>
-        <div class="badge-new">最新</div>
+        <div class="badge-done">賽後結果✅</div>
       </div>
       <div class="card-title">跑馬地夜賽</div>
       <div class="card-meta">9 場 · 草地</div>
-      <div class="card-desc">今日賽前 AI 預測，賽後結果待更新。</div>
+      <div class="card-desc">AI 預測記錄存檔。</div>
     </a>
 
     <a class="card" href="races/2026-04-12/index.html">
@@ -92,7 +105,7 @@ footer{text-align:center;padding:28px 24px 40px;border-top:1px solid #1a2040;fon
 </section>
 
 <footer>
-  AI 賽馬預測 · 僅供參考，不構成投注建議
+  AI 賽馬預測 · 僅供參考，不構成投注建議 · ⚠️ 賭博須適可而止，如有需要請致電賭博輔導熱線：1834 633
 </footer>
 </body>
 </html>
